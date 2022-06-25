@@ -4,26 +4,48 @@
 
     <div class="col">
       <label for="roomId">Id</label>
-      <input type="text" formControlName="id" id="roomId" class="form-control">
+      <input type="text" formControlName="id" id="roomId" class="form-control"  [ngClass]="myIdValidation()">
+      <div class="invalid-feedback">
+        {{this.myFormGroup.get('id').hasError('required') ? 'ID id required' : ''}}
+        </div>
+        <div class="invalid-feedback">
+          {{this.myFormGroup.get('id').hasError('minlength') ? 'Minimum lenght is 2' : ''}}
+          </div>
     </div>
 
     <div class="col">
       <label for="roomTitle">Title</label>
-      <input type="text" formControlName="title" id="roomTitle" class="form-control">
+      <input type="text" formControlName="title" id="roomTitle" class="form-control" [ngClass]="myTitleValidation()">
+      <div class="invalid-feedback">
+        {{this.myFormGroup.get('title').hasError('required') ? 'Title is required' : ''}}
+        </div>
+          <div class="invalid-feedback">
+            {{this.myFormGroup.get('title').hasError('maxlength') ? 'Maximum lenght is 10' : ''}}
+            </div>
+            <div class="invalid-feedback">
+              {{ notValidTitle() }}
+              </div>
+
     </div>
 
     <div class="col d-none">
       <label for="roomImageUrl">Image url</label>
-      <input type="text" formControlName="imageUrl" id="roomImageUrl" class="form-control">
+      <input type="text" formControlName="imageUrl" id="roomImageUrl" class="form-control" >
     </div>
 
     <div class="col">
       <label for="roomPrice">Price</label>
-      <input type="text" formControlName="price" id="roomPrice" class="form-control">
+      <input type="text" formControlName="price" id="roomPrice" class="form-control" [ngClass]="myPriceValidation()">
+      <div class="invalid-feedback">
+        {{this.myFormGroup.get('price').hasError('required') ? 'Price is required' : ''}}
+        </div>
+          <div class="invalid-feedback">
+            {{this.myFormGroup.get('price').hasError('pattern') ? 'Must be between 1 and 100. ' : ''}}
+            </div>
     </div>
 
     <div class="col mt-4">
-      <input type="submit"  value="Add room" class="btn btn-primary">
+      <input type="submit"   value="Add room" class="btn btn-primary" [disabled]="myTitleValidation() !== 'is-valid' || myPriceValidation() !== 'is-valid' || myIdValidation() !== 'is-valid'">
 
     </div>
 
