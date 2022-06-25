@@ -1,6 +1,6 @@
 <div class="mb-4">
 
-  <form [formGroup]="myFormGroup" class="row">
+  <form [formGroup]="myFormGroup" class="row"  (ngSubmit)="onSubmit()">
 
     <div class="col">
       <label for="roomId">Id</label>
@@ -23,7 +23,8 @@
     </div>
 
     <div class="col mt-4">
-      <app-room-add (onAddRoom)="onAdd($event)"></app-room-add>
+      <input type="submit"  value="Add room" class="btn btn-primary">
+
     </div>
 
   </form>

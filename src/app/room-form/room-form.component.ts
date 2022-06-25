@@ -30,13 +30,9 @@ export class RoomFormComponent implements OnInit {
     });
   }
 
-  onAdd(canAdd: boolean) {
-    if (canAdd) {
-      this.onSubmit();
-    }
-  }
 
-  private onSubmit() {
+
+   onSubmit() {
 
     // add room
 
@@ -46,6 +42,7 @@ export class RoomFormComponent implements OnInit {
       img: 'assets/img/room.jpg',
       price: this.myFormGroup.get('price').value
     }
+    this.initForm();
 
     this.roomService.addRoom(room);
   }
