@@ -1,0 +1,31 @@
+<div class="mb-4">
+
+  <form [formGroup]="myFormGroup" class="row">
+
+    <div class="col">
+      <label for="roomId">Id</label>
+      <input type="text" formControlName="id" id="roomId" class="form-control">
+    </div>
+
+    <div class="col">
+      <label for="roomTitle">Title</label>
+      <input type="text" formControlName="title" id="roomTitle" class="form-control">
+    </div>
+
+    <div class="col d-none">
+      <label for="roomImageUrl">Image url</label>
+      <input type="text" formControlName="imageUrl" id="roomImageUrl" class="form-control">
+    </div>
+
+    <div class="col">
+      <label for="roomPrice">Price</label>
+      <input type="text" formControlName="price" id="roomPrice" class="form-control">
+    </div>
+
+    <div class="col mt-4">
+      <app-room-add (onAddRoom)="onAdd($event)"></app-room-add>
+    </div>
+
+  </form>
+
+</div>
